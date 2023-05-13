@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Authcontext } from '../../Providers/Authprovider';
 const Login = () => {
     const handellogin = event => {
-        const { signin } = useContext(Authcontext)
+        const { signin, logOut } = useContext(Authcontext)
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;

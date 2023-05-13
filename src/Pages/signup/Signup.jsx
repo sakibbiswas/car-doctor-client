@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import login from '../../assets/images/login/login.svg'
 import { Authcontext } from '../../Providers/Authprovider';
 const Signup = () => {
-    const { user, createuser } = useContext(Authcontext)
+    const { createuser, update } = useContext(Authcontext)
     const handelsignup = event => {
         event.preventDefault();
         const form = event.target;
@@ -15,6 +15,10 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                loggeduser.displayName = name;
+                loggeduser.photoURL = photo;
+                update(name, photo)
+                    .then(console.log('profile updated'))
             })
             .catch(error => {
                 console.log(error);
