@@ -12,20 +12,22 @@ const Authprovider = ({ children }) => {
 
     }
 
-    const signin = (email, password) => {
+    const signIn = (email, password) => {
         setloadin(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
-        const unsuccribe = onAuthStateChanged(auth, currentuser => {
-            console.log('current user', currentuser);
-            setuser(currentuser)
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log('current user', currentUser);
+            setuser(currentUser)
             setloadin(false)
         })
         return () => {
-            return unsuccribe()
+
+            return unsubscribe();
         }
+
     }, [])
     const logOut = () => {
         setloadin(true)
@@ -42,7 +44,7 @@ const Authprovider = ({ children }) => {
         user,
         loading,
         createuser,
-        signin,
+        signIn,
         logOut,
         update,
     }
