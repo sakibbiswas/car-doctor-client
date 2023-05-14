@@ -9,7 +9,7 @@ const Bookings = () => {
     const { user } = useContext(Authcontext)
     const [bookings, setbookings] = useState([])
     const navigate = useNavigate()
-    const url = `http://localhost:4000/bookings/?email=${user?.email}`
+    const url = `https://car-doctor-server-orpin-ten.vercel.app/bookings/?email=${user?.email}`
 
     useEffect(() => {
         fetch(url, {
