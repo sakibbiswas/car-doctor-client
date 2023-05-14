@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                 element: <Privaterout>
                     <Bookservice></Bookservice>
                 </Privaterout>,
-                loader: ({ params }) => fetch(`http://localhost:4000/sirvices/${params.id}`)
+                loader: ({ params }) => fetch(`https://car-doctor-server-orpin-ten.vercel.app/sirvices/${params.id}`)
             },
             {
                 path: '/bookings',

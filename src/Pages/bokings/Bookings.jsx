@@ -3,17 +3,33 @@ import { Authcontext } from '../../Providers/Authprovider';
 import Bookingrow from './Bookingrow';
 import Swal from 'sweetalert2';
 import { Container } from 'postcss';
+import { useNavigate } from 'react-router-dom';
 
 const Bookings = () => {
     const { user } = useContext(Authcontext)
     const [bookings, setbookings] = useState([])
+    const navigate = useNavigate()
     const url = `http://localhost:4000/bookings/?email=${user?.email}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authurizataion: `Bearer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setbookings(data))
-    }, [url])
+            .then(data => {
+                if (!data.error) {
+
+                    setbookings(data)
+                }
+                else {
+                    // lofout and then navigate
+                    navigate('/')
+                }
+            })
+    }, [url, navigate])
 
     const handeldelete = id => {
 
