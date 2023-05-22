@@ -4,11 +4,12 @@ import Servicecard from './Servicecard';
 
 const Services = () => {
     const [services, setservices] = useState([])
+    const [asc, setase] = useState(true)
     useEffect(() => {
-        fetch('https://car-doctor-server-orpin-ten.vercel.app/sirvices')
+        fetch(`http://localhost:4000/sirvices?sort=${asc ? 'asc' : 'dsc'}`)
             .then(res => res.json())
             .then(data => setservices(data))
-    }, [])
+    }, [asc])
     return (
         <div className='mt-4'>
             <div className=" text-center space-y-2">
@@ -17,6 +18,11 @@ const Services = () => {
                 <p className=''>
                     the majority have suffered alteration in some form, by injected humour, or randomised words <br /> which don't look even slightly believable.
                 </p>
+
+                <button className="btn btn-info"
+                    onClick={() => setase(!asc)}
+                >{asc ? 'price high to low' : "price low to high"}</button>
+
 
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10'>

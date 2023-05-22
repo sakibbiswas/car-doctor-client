@@ -20,7 +20,7 @@ const Bookservice = () => {
         }
         console.log(booking);
 
-        fetch('https://car-doctor-server-orpin-ten.vercel.app/bookings', {
+        fetch('http://localhost:4000/bookings', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -34,7 +34,7 @@ const Authprovider = ({ children }) => {
                 }
                 console.log(loggeduser);
 
-                fetch('https://car-doctor-server-orpin-ten.vercel.app/jwt', {
+                fetch('http://localhost:4000/jwt', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
